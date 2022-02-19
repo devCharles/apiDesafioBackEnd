@@ -5,7 +5,7 @@ const auth = require('../middlewares/auth.middleware')
 
 const router = express.Router()
 
-router.use(auth)
+//router.use(auth)
 
 //Endpoit Get Post
 router.get('/', async (request, response) => {
@@ -31,7 +31,7 @@ router.get('/:id', async (request, response) => {
         const postFound = await posts.getByIdPost(request.params.id)
         if (!postFound)
             throw new createError(404, 'Post not found')
-        res.json({ 
+        response.json({ 
             ok: true, 
             post: postFound
         })  
@@ -39,7 +39,7 @@ router.get('/:id', async (request, response) => {
         response.status(error.status || 500)
         response.json({
             ok: false,
-            error
+            message: error.message
         })
     }
 })
