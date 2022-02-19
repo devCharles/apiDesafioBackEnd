@@ -5,7 +5,7 @@ const auth = require('../middlewares/auth.middleware')
 
 const router = express.Router()
 
-router.use(auth)
+
 
 //Endpoit Get Post
 router.get('/', async (request, response) => {
@@ -31,7 +31,7 @@ router.get('/:id', async (request, response) => {
         const postFound = await posts.getByIdPost(request.params.id)
         if (!postFound)
             throw new createError(404, 'Post not found')
-        res.json({ 
+        response.json({ 
             ok: true, 
             post: postFound
         })  
@@ -45,7 +45,7 @@ router.get('/:id', async (request, response) => {
 })
 
 //Endpoint Create
-router.post('/', async (request, response) => {
+router.post('/',auth, async (request, response) => {
     try {
         const postCreate = await posts.createPost(request.body)
         response.json({
@@ -63,12 +63,12 @@ router.post('/', async (request, response) => {
 })
 
 //Endpoint Update
-router.patch('/:id', async (request, response) => {
+router.patch('/:id',auth, async (request, response) => {
     try {
         const postUpdate = await posts.updateByIdPost(request.params.id, request.body)
         response.json({
             ok: true,
-            message: 'Post udated',
+            message: 'Post updated',
             post: postUpdate
         })
     } catch (error) {
@@ -82,7 +82,7 @@ router.patch('/:id', async (request, response) => {
 
 
 //EndPoint Delete udated
-router.delete('/:id', async (request, response) => {
+router.delete('/:id',auth, async (request, response) => {
     try {
         const postDelete = await posts.deleteByIdPost(request.params.id)
         if (!postDelete){

@@ -12,7 +12,7 @@ const {
 mongoose.connect(`mongodb+srv://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`)
     .then(
         server.listen(8080, () =>{
-            console.log('Sigue corriendo Siuuuurver')
+            console.log('server is running')
         })
     )
     .catch( error => {
