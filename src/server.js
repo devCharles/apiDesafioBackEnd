@@ -17,6 +17,7 @@ app.use('/auth',authRouter)
 
 
 
+
 app.get('/', (request, response) =>{
     response.json({
         ok:true,

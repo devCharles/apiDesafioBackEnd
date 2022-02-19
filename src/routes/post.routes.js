@@ -6,7 +6,6 @@ const auth = require('../middlewares/auth.middleware')
 const router = express.Router()
 
 
-
 //Endpoit Get Post
 router.get('/', async (request, response) => {
     try {
@@ -39,7 +38,7 @@ router.get('/:id', async (request, response) => {
         response.status(error.status || 500)
         response.json({
             ok: false,
-            error
+            message: error.message
         })
     }
 })
