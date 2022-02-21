@@ -11,7 +11,7 @@ const {
 
 mongoose.connect(`mongodb+srv://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`)
     .then(
-        server.listen(8080, () =>{
+        server.listen(process.env.PORT || 3000, () =>{
             console.log('server is running')
         })
     )
