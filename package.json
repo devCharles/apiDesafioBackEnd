@@ -4,10 +4,6 @@
   "description": "",
   "main": "index.js",
   "private": false,
-  "engines": {
-    "node": "12.*",
-    "npm":"8.*"
-  },
   "scripts": {
     "start": "node index.js"
   },
